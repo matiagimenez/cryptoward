@@ -2,7 +2,23 @@
 
 CryptoWard is a comprehensive cryptocurrency monitoring tool designed to keep you informed about Bitcoin and Ethereum. The app provides real-time price updates, historical data analysis, and automated reporting, helping you stay on top of market trends and make informed investment decisions.
 
-### **Features**
+## **Instructions**
+
+1. Install dependencies
+
+```sh
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+```
+
+2. Run the application
+
+```sh
+python3 src/main.py
+```
+
+## **Features**
 
 1. **Regular Price Scraping:**
 
