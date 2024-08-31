@@ -7,12 +7,16 @@ CryptoWard is a comprehensive cryptocurrency monitoring tool designed to keep yo
 1. Install dependencies
 
 ```sh
-python3 -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
+pipenv install
 ```
 
-2. Run the application
+2. Activate the virtual environment
+
+```sh
+pipenv shell
+```
+
+3. Run the application
 
 ```sh
 python3 src/main.py
