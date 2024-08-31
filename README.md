@@ -19,7 +19,7 @@ pipenv shell
 3. Run the application
 
 ```sh
-python3 src/main.py
+python src/main.py
 ```
 
 ## **Features**
