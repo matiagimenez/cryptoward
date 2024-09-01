@@ -15,7 +15,7 @@ for currency in currencies:
             raise ValueError(f"Error fetching {currency} price")
 
         google_spreadsheet.update_worksheet(
-            currency.code, current_time, float(price), exchange_rate
+            currency.name, current_time, float(price), exchange_rate
         )
 
     except Exception as e:

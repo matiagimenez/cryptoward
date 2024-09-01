@@ -1,6 +1,5 @@
-from datetime import time
-from re import split
 from gspread.worksheet import Worksheet
+from gspread.exceptions import WorksheetNotFound, GSpreadException
 from pandas import DataFrame
 from typing import Optional
 import gspread
@@ -19,37 +18,51 @@ class Spreadsheet(BaseModel):
     def get_currency_worksheet_index(self, currency: str) -> Optional[int]:
         return self.worksheets.get(currency)
 
-    def get_worksheet_values_by_index(self, index: int) -> Optional[DataFrame]:
+    def get_worksheet_values_by_index(self, index: int) -> DataFrame:
 
         if index not in self.worksheets.values():
-            return None
+            raise ValueError(f"The index {index} has not got any currency associated")
 
         google_client = self.auth_google_client(self.credentials_path)
         spreadsheet = google_client.open_by_key(self.key)
 
-        # TODO: If the worksheet doesn't exist, create it.
         worksheet = spreadsheet.get_worksheet(index)
+
         dataframe = DataFrame(worksheet.get_all_records())
         return dataframe
 
-    def get_worksheet_index(self, currency: str) -> Optional[int]:
+    def get_worksheet_index(self, currency: str) -> int:
         index = self.worksheets.get(currency)
+
+        if index is None:
+            raise ValueError(f"The index {index} has not got any currency associated")
 
         return index
 
-    def get_worksheet_by_currency(self, currency: str) -> Optional[Worksheet]:
+    def get_worksheet_by_currency(self, currency: str) -> Worksheet:
         index = self.get_worksheet_index(currency)
+
         if index is None:
-            return None
+            raise ValueError(f"The index {index} has not got any currency associated")
 
         google_client = self.auth_google_client(self.credentials_path)
         spreadsheet = google_client.open_by_key(self.key)
-        worksheet = spreadsheet.get_worksheet(index)
+
+        try:
+            worksheet = spreadsheet.get_worksheet(index)
+        except WorksheetNotFound:
+            worksheet = spreadsheet.add_worksheet(title=currency, rows=100, cols=20)
+            worksheet.append_row(["Date", "Price(U$D)", "Price(AR$)"])
+            worksheet.format(
+                "A1:C1",
+                {
+                    "horizontalAlignment": "CENTER",
+                },
+            )
 
         return worksheet
 
     def format_worksheet(self, worksheet, cells_range):
-        # Format the specified range of cells
         worksheet.format(
             cells_range,
             {
@@ -58,7 +71,6 @@ class Spreadsheet(BaseModel):
                 "textFormat": {
                     "foregroundColor": {"red": 0.0, "green": 0.0, "blue": 0.0},
                     "fontSize": 10,
-                    "bold": True,
                 },
             },
         )
@@ -72,11 +84,8 @@ class Spreadsheet(BaseModel):
             row_above_range,
             {
                 "backgroundColor": {"red": 1.0, "green": 1.0, "blue": 1.0},
-                "horizontalAlignment": "CENTER",
                 "textFormat": {
                     "foregroundColor": {"red": 0.0, "green": 0.0, "blue": 0.0},
-                    "fontSize": 10,
-                    "bold": False,
                 },
             },
         )
@@ -85,16 +94,14 @@ class Spreadsheet(BaseModel):
         self, currency: str, current_time: str, price: float, exchange_rate: float
     ) -> None:
         worksheet = self.get_worksheet_by_currency(currency)
-        index = self.get_worksheet_index(currency)
-
-        if index is None or worksheet is None:
-            return None
 
         response = worksheet.append_row([current_time, price, price * exchange_rate])
         cells_updated = response.get("updates")
 
         if not cells_updated:
-            return
+            raise GSpreadException(
+                f"An error occurred while updating the worksheet: {worksheet.title}"
+            )
 
         cells_range = cells_updated["updatedRange"].split("!")[1]
         self.format_worksheet(worksheet, cells_range)
