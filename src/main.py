@@ -1,7 +1,7 @@
 from datetime import datetime
 from google_spreadsheets import google_spreadsheet
 from currencies.currency import Currency
-from data.currencies import currencies
+from currencies.data.currencies import currencies
 
 
 for currency in currencies:

@@ -3,21 +3,17 @@ from gspread.worksheet import Worksheet
 from pandas import DataFrame
 from typing import Optional
 import gspread
-from dataclasses import dataclass
 from pathlib import Path
+from pydantic import BaseModel, Field
 
 
-@dataclass
-class Spreadsheet:
-    key: str
+class Spreadsheet(BaseModel):
+    key: str = Field(min_length=1)
+    credentials_path: Path
     worksheets: dict[str, int]
 
-    def __init__(
-        self, key: str, credentials_path: Path, worksheets: dict[str, int]
-    ) -> None:
-        self.key = key
-        self.worksheets = worksheets
-        self.google_client = gspread.auth.service_account(credentials_path)
+    def auth_google_client(self, credentials_path: Path):
+        return gspread.auth.service_account(credentials_path)
 
     def get_currency_worksheet_index(self, currency: str) -> Optional[int]:
         return self.worksheets.get(currency)
@@ -27,7 +23,8 @@ class Spreadsheet:
         if index not in self.worksheets.values():
             return None
 
-        spreadsheet = self.google_client.open_by_key(self.key)
+        google_client = self.auth_google_client(self.credentials_path)
+        spreadsheet = google_client.open_by_key(self.key)
         worksheet = spreadsheet.get_worksheet(index)
         dataframe = DataFrame(worksheet.get_all_records())
         return dataframe
@@ -42,14 +39,15 @@ class Spreadsheet:
         if index is None:
             return None
 
-        spreadsheet = self.google_client.open_by_key(self.key)
+        google_client = self.auth_google_client(self.credentials_path)
+        spreadsheet = google_client.open_by_key(self.key)
         worksheet = spreadsheet.get_worksheet(index)
 
         return worksheet
 
-    def format_worksheet(self, worksheet):
+    def format_worksheet(self, worksheet, cells_range):
         worksheet.format(
-            "A1:C2",
+            cells_range,
             {
                 "backgroundColor": {"red": 0.0, "green": 0.0, "blue": 0.0},
                 "horizontalAlignment": "CENTER",

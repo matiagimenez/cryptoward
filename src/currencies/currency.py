@@ -1,21 +1,14 @@
-from dataclasses import dataclass
 import requests
 from bs4 import BeautifulSoup, Tag, NavigableString
 from typing import Union, Optional
+from pydantic import BaseModel, Field
 
 
-@dataclass
-class Currency:
-    name: str
-    code: str
-    endpoint: str
-    index: int
-
-    def __init__(self, name: str, code: str, endpoint: str, index: int) -> None:
-        self.name = name
-        self.code = code
-        self.endpoint = endpoint
-        self.index = index
+class Currency(BaseModel):
+    name: str = Field(min_length=1, max_length=50)
+    code: str = Field(min_length=2, max_length=5)
+    endpoint: str = Field(min_length=10)
+    index: int = Field(ge=0)
 
     @classmethod
     def get_exchange_rate(cls) -> float:
