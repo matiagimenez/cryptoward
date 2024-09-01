@@ -47,7 +47,23 @@ class Spreadsheet:
 
         return worksheet
 
-    def update_worksheet(self, currency: str, current_time: str, price: float) -> None:
+    def format_worksheet(self, worksheet):
+        worksheet.format(
+            "A1:C2",
+            {
+                "backgroundColor": {"red": 0.0, "green": 0.0, "blue": 0.0},
+                "horizontalAlignment": "CENTER",
+                "textFormat": {
+                    "foregroundColor": {"red": 1.0, "green": 1.0, "blue": 1.0},
+                    "fontSize": 12,
+                    "bold": True,
+                },
+            },
+        )
+
+    def update_worksheet(
+        self, currency: str, current_time: str, price: float, exchange_rate: float
+    ) -> None:
         worksheet = self.get_worksheet_by_currency(currency)
         index = self.get_worksheet_index(currency)
 
@@ -59,4 +75,8 @@ class Spreadsheet:
         if dataframe is None:
             return None
 
-        worksheet.append_row([current_time, price, price])
+        response = worksheet.append_row([current_time, price, price * exchange_rate])
+        # TODO: Format the updated cells
+        # self.format_cells(worksheet, cells_range)
+
+        print(response)
