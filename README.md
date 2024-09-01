@@ -16,7 +16,13 @@ pipenv install
 pipenv shell
 ```
 
-3. Run the application
+3. Install pre-commit hooks
+
+```sh
+pre-commit install
+```
+
+4. Run the application
 
 ```sh
 python src/main.py
