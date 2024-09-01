@@ -16,13 +16,7 @@ pipenv install
 pipenv shell
 ```
 
-3. Install pre-commit hooks
-
-```sh
-pre-commit install
-```
-
-4. Run the application
+3. Run the application
 
 ```sh
 python src/main.py
@@ -32,7 +26,7 @@ python src/main.py
 
 1. **Regular Price Scraping:**
 
-    Constant monitoring of cryptocurrencies with up-to-date records, retrieving current prices of Bitcoin and Ethereum at regular intervals (e.g., every minute, hour, etc.) and storing them in a Google Sheets document.
+    Constant monitoring of cryptocurrencies with up-to-date records, retrieving current prices of Bitcoin and Ethereum at regular intervals and storing them in a Google Sheets document.
 
 2. **Price History:**
 
@@ -50,4 +44,4 @@ python src/main.py
 
     To keep users informed of recent changes without the need for manual queries, schedule the bot to send daily, weekly, and monthly price summaries, reflecting variations compared to the previous summary, whether daily, monthly, or annually.
 
-    Use the OpenAI API to generate automatic reports that include a summary of cryptocurrency performance, trend analysis, and possible market movements.
+    Use the OpenAI to generate automatic reports that include a summary of cryptocurrency performance, trend analysis, and possible market movements.

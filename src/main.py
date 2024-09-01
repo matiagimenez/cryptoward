@@ -4,6 +4,7 @@ from currencies.currency import Currency
 from currencies.data.currencies import currencies
 
 
+# TODO: Create a cronjob for updating worksheet everyday
 for currency in currencies:
     try:
         price = currency.fetch_price()
