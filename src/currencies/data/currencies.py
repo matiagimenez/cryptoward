@@ -15,12 +15,18 @@ try:
             endpoint="https://coinmarketcap.com/es/currencies/ethereum/",
             index=1,
         ),
-        Currency(
-            name="Polygon",
-            code="MATIC",
-            endpoint="https://coinmarketcap.com/es/currencies/polygon/",
-            index=2,
-        ),
+        # Currency(
+        #     name="Polygon",
+        #     code="MATIC",
+        #     endpoint="https://coinmarketcap.com/es/currencies/polygon/",
+        #     index=2,
+        # ),
+        # Currency(
+        #     name="Solana",
+        #     code="SOL",
+        #     endpoint="https://coinmarketcap.com/es/currencies/solana/",
+        #     index=3,
+        # ),
     ]
 except ValidationError as e:
     print(e.errors())
