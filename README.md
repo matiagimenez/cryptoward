@@ -43,5 +43,3 @@ python src/main.py
 5. **Scheduled Notifications:**
 
     To keep users informed of recent changes without the need for manual queries, schedule the bot to send daily, weekly, and monthly price summaries, reflecting variations compared to the previous summary, whether daily, monthly, or annually.
-
-    Use the OpenAI to generate automatic reports that include a summary of cryptocurrency performance, trend analysis, and possible market movements.
