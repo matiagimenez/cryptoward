@@ -5,9 +5,7 @@ from core import settings
 
 
 google_spreadsheet_key: str = settings.spreadsheet_key
-credentials_path = Path.joinpath(
-    Path(__file__).resolve().parent, "..", "..", "credentials.json"
-)
+credentials_path = Path.joinpath(settings.root_dir, "credentials.json")
 
 worksheets = {currency.name: currency.index for currency in currencies}
 google_spreadsheet = Spreadsheet(
