@@ -1,6 +1,13 @@
-# CryptoWard
+# Cryptoward
 
-CryptoWard is a comprehensive cryptocurrency monitoring tool designed to keep you informed about Bitcoin and Ethereum. The app provides real-time price updates, historical data analysis, and automated reporting, helping you stay on top of market trends and make informed investment decisions.
+Cryptoward is a comprehensive cryptocurrency monitoring tool designed to keep you informed about Bitcoin and Ethereum. The app provides real-time price updates, historical data analysis, and automated reporting, helping you stay on top of market trends and make informed investment decisions.
+
+## Build with
+
+-   [Python](https://www.python.org/)
+-   [Pydantic](https://docs.pydantic.dev/latest/)
+-   [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
+-   [GSpread](https://github.com/burnash/gspread)
 
 ## **Instructions**
 
@@ -43,5 +50,3 @@ python src/main.py
 5. **Scheduled Notifications:**
 
     To keep users informed of recent changes without the need for manual queries, schedule the bot to send daily, weekly, and monthly price summaries, reflecting variations compared to the previous summary, whether daily, monthly, or annually.
-
-    Use the OpenAI to generate automatic reports that include a summary of cryptocurrency performance, trend analysis, and possible market movements.
