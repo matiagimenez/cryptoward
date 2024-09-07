@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup, Tag, NavigableString
 from typing import Union, Optional
 from pydantic import BaseModel, Field
+from core import Logger
 
 
 class Currency(BaseModel):
@@ -35,4 +36,5 @@ class Currency(BaseModel):
             price = element.get_text().split("$")[1].replace(",", "")
             return price
         except Exception:
+            Logger.error(f"Error fetching data from {self.endpoint}")
             raise requests.RequestException(f"Error fetching data from {self.endpoint}")

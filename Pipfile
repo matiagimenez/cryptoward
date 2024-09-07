@@ -10,6 +10,8 @@ pandas = "*"
 gspread = "*"
 pydantic = "*"
 pydantic-settings = "*"
+loguru = "*"
+schedule = "*"
 
 [dev-packages]
 black = "*"

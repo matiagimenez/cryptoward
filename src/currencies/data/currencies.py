@@ -1,5 +1,6 @@
 from currencies import Currency
 from pydantic import ValidationError
+from core.logger import Logger
 
 try:
     currencies = [
@@ -29,4 +30,4 @@ try:
         # ),
     ]
 except ValidationError as e:
-    print(e.errors())
+    Logger.error(e.errors())
