@@ -21,3 +21,6 @@ pytest = "*"
 [requires]
 python_version = "3.12"
 python_full_version = "3.12.5"
+
+[scripts]
+format = "pre-commit run --all-files"
