@@ -1,4 +1,4 @@
-from currencies.currency import Currency
+from currencies import Currency
 from pydantic import ValidationError
 
 try:

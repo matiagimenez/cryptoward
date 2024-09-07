@@ -1,7 +1,6 @@
 from datetime import datetime
 from google_spreadsheets import google_spreadsheet
-from currencies.currency import Currency
-from currencies.data.currencies import currencies
+from currencies import Currency, currencies
 
 
 # TODO: Create a cronjob for updating worksheet everyday
