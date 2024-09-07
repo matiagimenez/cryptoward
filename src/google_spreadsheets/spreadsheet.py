@@ -1,3 +1,4 @@
+from gspread.client import Client
 from gspread.worksheet import Worksheet
 from gspread.exceptions import WorksheetNotFound, GSpreadException
 from pandas import DataFrame
@@ -12,7 +13,7 @@ class Spreadsheet(BaseModel):
     credentials_path: Path
     worksheets: dict[str, int]
 
-    def auth_google_client(self, credentials_path: Path):
+    def auth_google_client(self, credentials_path: Path) -> Client:
         return gspread.auth.service_account(credentials_path)
 
     def get_currency_worksheet_index(self, currency: str) -> Optional[int]:
@@ -62,7 +63,7 @@ class Spreadsheet(BaseModel):
 
         return worksheet
 
-    def format_worksheet(self, worksheet, cells_range):
+    def format_worksheet(self, worksheet, cells_range) -> None:
         worksheet.format(
             cells_range,
             {
