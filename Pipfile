@@ -24,4 +24,4 @@ python_full_version = "3.12.5"
 
 [scripts]
 format = "pre-commit run --all-files"
-test = "pytest"
+test = "pytest -s"

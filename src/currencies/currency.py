@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup, Tag, NavigableString
 from typing import Union, Optional
 from pydantic import BaseModel, Field
-from core import Logger
+from core.logger import Logger
 
 
 class Currency(BaseModel):

@@ -1,7 +1,9 @@
 from datetime import datetime
-from core import Scheduler, Logger
+from core.scheduler import Scheduler
+from core.logger import Logger
 from google_spreadsheets import google_spreadsheet
-from currencies import Currency, currencies
+from currencies.currency import Currency
+from currencies.data.currencies import currencies
 
 
 def job():

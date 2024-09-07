@@ -32,16 +32,8 @@ class Spreadsheet(BaseModel):
         dataframe = DataFrame(worksheet.get_all_records())
         return dataframe
 
-    def get_worksheet_index(self, currency: str) -> int:
-        index = self.worksheets.get(currency)
-
-        if index is None:
-            raise ValueError(f"The index {index} has not got any currency associated")
-
-        return index
-
     def get_worksheet_by_currency(self, currency: str) -> Worksheet:
-        index = self.get_worksheet_index(currency)
+        index = self.get_currency_worksheet_index(currency)
 
         if index is None:
             raise ValueError(f"The index {index} has not got any currency associated")

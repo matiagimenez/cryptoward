@@ -1,4 +1,4 @@
-from currencies import Currency
+from currencies.currency import Currency
 from pydantic import ValidationError
 from core.logger import Logger
 

@@ -1,7 +1,7 @@
 from pathlib import Path
 from google_spreadsheets.spreadsheet import Spreadsheet
 from currencies.data.currencies import currencies
-from core import settings
+from core.config import settings
 
 
 google_spreadsheet_key: str = settings.spreadsheet_key
