@@ -9,7 +9,6 @@ beautifulsoup4 = "~=4.13"
 pydantic = "~=2.10"
 pydantic-settings = "~=2.7"
 loguru = "~=0.7"
-schedule = "~=1.2"
 
 [dev-packages]
 pre-commit = "4.1.0"
