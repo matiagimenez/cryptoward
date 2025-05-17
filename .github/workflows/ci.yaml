@@ -76,6 +76,7 @@ jobs:
           pipenv install --dev
 
       - name: Bump version using semantic-release
+        if: github.ref == 'refs/heads/main'
         uses: python-semantic-release/python-semantic-release@v9.21.1
         with:
           github_token: ${{ secrets.GH_TOKEN }}
