@@ -13,6 +13,7 @@ permissions:
 
 jobs:
   lint-and-test:
+    name: Lint and Test
     runs-on: ubuntu-latest
 
     steps:
@@ -26,15 +27,18 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Install pre-commit
+        run: pip install pre-commit
+
+      - name: Autoupdate pre-commit hooks
+        working-directory: '.'
+        run: pre-commit autoupdate
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           pip install pipenv
           pipenv install --dev
-
-      - name: Autoupdate pre-commit hooks
-        working-directory: '.'
-        run: pre-commit autoupdate
       - name: Commit and push changes
         run: |
           git config --global user.name "github-actions[bot]"
