@@ -4,8 +4,8 @@
 name: Pre-commit manual update
 
 on:
-  # schedule:
-  #   - cron: '0 2 * * *'
+  schedule:
+    - cron: '0 2 * * *'
   workflow_dispatch: # Allows manual triggering of the workflow
 
 permissions:
