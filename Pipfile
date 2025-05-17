@@ -1,0 +1,27 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+requests = "~=2.32"
+beautifulsoup4 = "~=4.13"
+pydantic = "~=2.10"
+pydantic-settings = "~=2.7"
+loguru = "~=0.7"
+schedule = "~=1.2"
+
+[dev-packages]
+pre-commit = "4.1.0"
+pytest = "8.3.4"
+pytest-cov = "6.0.0"
+ruff = "==0.9.5"
+pylint = "==3.3.4"
+
+[requires]
+python_version = "3.12"
+
+[scripts]
+format = "pre-commit run --all-files"
+test = "pytest --cov=cryptoward --cov-report=term-missing"
+start = "python -m cryptoward.app"
