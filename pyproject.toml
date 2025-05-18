@@ -280,6 +280,7 @@ disable = '''print-statement,
         missing-function-docstring,
         W,
         R0201,
+        R0401,
         useless-option-value,
 '''
 enable = 'c-extension-no-member'

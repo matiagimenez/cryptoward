@@ -9,7 +9,8 @@ beautifulsoup4 = "~=4.13"
 pydantic = "~=2.10"
 pydantic-settings = "~=2.7"
 loguru = "~=0.7"
-kafka-python = "==2.2.7"
+kafka-python = "~=2.2"
+inject = "~=5.2"
 
 [dev-packages]
 pre-commit = "4.1.0"
@@ -21,6 +22,8 @@ ipykernel = "==6.29.5"
 ipynbname = "==2024.1.0.0"
 pytest-recording = "==0.13.4"
 mockafka-py = "==0.1.63"
+polyfactory = "==2.21.0"
+pytest-mock = "==3.14.0"
 
 [requires]
 python_version = "3.12"

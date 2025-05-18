@@ -8,3 +8,7 @@ class EventHandler(ABC):
     def send_event(self, event: Event) -> None:
         exception = "Subclasses must implement this method."
         raise NotImplementedError(exception)
+
+    @property
+    @abstractmethod
+    def topic(self) -> str: ...
