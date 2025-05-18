@@ -13,9 +13,9 @@ kafka-python = "~=2.2"
 inject = "~=5.2"
 
 [dev-packages]
-pre-commit = "4.1.0"
-pytest = "8.3.4"
-pytest-cov = "6.0.0"
+pre-commit = "==4.1.0"
+pytest = "==8.3.4"
+pytest-cov = "==6.0.0"
 ruff = "==0.9.5"
 pylint = "==3.3.4"
 ipykernel = "==6.29.5"
