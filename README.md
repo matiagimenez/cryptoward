@@ -10,7 +10,7 @@ Build an end-to-end ETL pipeline that scrapes crypto prices and stores them for 
 - [Airflow](https://airflow.apache.org/)
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 - [Kafka](https://kafka.apache.org/)
-- [InfluxDB](https://www.influxdata.com/)
+- [PostgreSQL]((https://www.postgresql.org/))
 - [Grafana](https://grafana.com/)
 
 ## **Features**
@@ -18,7 +18,7 @@ Build an end-to-end ETL pipeline that scrapes crypto prices and stores them for 
 1. **Data Source Scrapping**
 2. **Streaming with Kafka**
 3. **ETL Processing with Spark Streaming**
-4. **Storage of timeseries data using InfluxDB**
+4. **Storage on PostgreSQL**
 5. **Visualization in Grafana**
 
 ## **Instructions**
