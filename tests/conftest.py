@@ -2,7 +2,7 @@ import pytest
 
 from cryptoward.injections import Environment, configure_injections
 
-pytest_plugins = ["conftest_settings"]
+pytest_plugins = ["tests.conftest_settings"]
 
 
 @pytest.fixture(autouse=True)
