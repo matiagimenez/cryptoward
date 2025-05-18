@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.2.0 (2025-05-18)
+
+### Features
+
+- **config**: Add cryptocurrency scrapper
+  ([`d4c9e99`](https://github.com/matiagimenez/cryptoward/commit/d4c9e99432ca00b40b9bb0f7557821911cd1ffc7))
+
+
 ## v0.1.0 (2025-05-17)
 
 ### Chores
