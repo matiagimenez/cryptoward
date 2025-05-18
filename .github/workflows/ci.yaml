@@ -30,19 +30,26 @@ jobs:
         run: pip install pre-commit
 
       - name: Autoupdate pre-commit hooks
-        run: pre-commit autoupdate
-
-      - name: Ensure on branch
         run: |
-          git checkout "${GITHUB_HEAD_REF:-$(git rev-parse --abbrev-ref HEAD)}"
+          pre-commit autoupdate
+          differences=$(git diff | xargs)
 
-      - name: Commit and push changes
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          if [ -z "$differences" ]; then
+            echo "No changes needed"
+            exit 0
+          fi
+
+          echo "::error::The pre-commit hooks are outdated"
+          echo "$differences"
+
+          git switch "${GITHUB_HEAD_REF:-$(git rev-parse --abbrev-ref HEAD)}"
+          git config --global user.email "$(git log -1 --pretty=format:'%ae' | xargs)"
+          git config --global user.name "${{ github.actor }}"
           git add .pre-commit-config.yaml
-          git commit -m "chore(config): update pre-commit hooks" || echo "No changes to commit"
-          git push || true
+          git commit -m "chore(config): update pre-commit hooks"
+          git push
+
+          sleep 15
 
       - name: Install dependencies
         run: |
@@ -75,8 +82,16 @@ jobs:
           pip install pipenv
           pipenv install --dev
 
-      - name: Bump version using semantic-release
+      - name: Bump version and update changelog
         if: github.ref == 'refs/heads/main'
         uses: python-semantic-release/python-semantic-release@v9.21.1
         with:
           github_token: ${{ secrets.GH_TOKEN }}
+
+      - name: Check breaking changes
+        if: github.ref == 'refs/heads/main'
+        run: |
+          pip install pipx==1.7.1
+          pipx install python-semantic-release==9.21.1
+          pipx install pycracks==0.20.2
+          pycracks -vv -t "$(semantic-release -v version --print)"
