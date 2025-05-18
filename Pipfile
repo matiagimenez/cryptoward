@@ -16,6 +16,9 @@ pytest = "8.3.4"
 pytest-cov = "6.0.0"
 ruff = "==0.9.5"
 pylint = "==3.3.4"
+ipykernel = "==6.29.5"
+ipynbname = "==2024.1.0.0"
+pytest-recording = "==0.13.4"
 
 [requires]
 python_version = "3.12"
@@ -23,4 +26,4 @@ python_version = "3.12"
 [scripts]
 format = "pre-commit run --all-files"
 test = "pytest --cov=cryptoward --cov-report=term-missing"
-start = "python -m cryptoward.app"
+start = "python -m cryptoward.main"
