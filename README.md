@@ -7,7 +7,6 @@ Build an end-to-end ETL pipeline that scrapes crypto prices and stores them for 
 - [Python](https://www.python.org/)
 - [Docker](https://www.docker.com/)
 - [Spark](https://spark.apache.org/docs/latest/api/python/index.html)
-- [Airflow](https://airflow.apache.org/)
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 - [Kafka](https://kafka.apache.org/)
 - [PostgreSQL](https://www.postgresql.org/)
