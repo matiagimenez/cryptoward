@@ -1,6 +1,6 @@
 # Cryptoward
 
-Build an end-to-end ETL pipeline that scrapes crypto prices and stores them for real-time or batch analysis.
+Build an end-to-end streaming pipeline that scrapes crypto prices and stores them for real-time or batch analysis.
 
 ## Build with
 
