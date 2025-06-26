@@ -1,6 +1,52 @@
 # CHANGELOG
 
 
+## v0.3.1 (2025-06-26)
+
+### Bug Fixes
+
+- **config**: Add scheduled job
+  ([`6cc878e`](https://github.com/matiagimenez/cryptoward/commit/6cc878e186a0e478aa18293b7ee6fa29fa2f9958))
+
+- **config**: Reorganize scrapper
+  ([`0034244`](https://github.com/matiagimenez/cryptoward/commit/0034244d6db25c83af3b7dc1dd9e3c99240eaa38))
+
+### Chores
+
+- **config**: Rename workflow
+  ([`bf24f0b`](https://github.com/matiagimenez/cryptoward/commit/bf24f0b06a8b8f55f4201d394d3837637108555f))
+
+- **config**: Update pre-commit hooks
+  ([`aa2c7ad`](https://github.com/matiagimenez/cryptoward/commit/aa2c7ad9f4406410e939e50934d9b69814ccf56f))
+
+- **config**: Update pre-commit hooks
+  ([`351ed83`](https://github.com/matiagimenez/cryptoward/commit/351ed83487c9f53858da99c5165f73ba46649b4f))
+
+- **config**: Update pre-commit hooks
+  ([`481d234`](https://github.com/matiagimenez/cryptoward/commit/481d234155529cafe403ac784047ed5072c1cef6))
+
+- **config**: Update pre-commit hooks
+  ([`63cf9ff`](https://github.com/matiagimenez/cryptoward/commit/63cf9ffe6d89f6a04731ae9ae9be2b5b3d2f5610))
+
+- **config**: Update pre-commit hooks
+  ([`9dc68b4`](https://github.com/matiagimenez/cryptoward/commit/9dc68b46cbbb5525f971f89d113f01e568c9a7f8))
+
+- **docs**: Fix url
+  ([`556c498`](https://github.com/matiagimenez/cryptoward/commit/556c4980bf8972a91c31ead4cb64a23e30bab95b))
+
+- **docs**: Update readme
+  ([`77f1f01`](https://github.com/matiagimenez/cryptoward/commit/77f1f018202f6721c363cfe12821eaf40fdb4bac))
+
+- **docs**: Update readme
+  ([`95469eb`](https://github.com/matiagimenez/cryptoward/commit/95469ebbcb0c7196848dd69d44b62d45a09035dc))
+
+- **docs**: Update readme
+  ([`c421fc1`](https://github.com/matiagimenez/cryptoward/commit/c421fc1ca7a38e125bfd345a323172e0046bf846))
+
+- **docs**: Update readme
+  ([`acff118`](https://github.com/matiagimenez/cryptoward/commit/acff1187a3969c98559d27b0281758c0dd81f732))
+
+
 ## v0.3.0 (2025-05-18)
 
 ### Bug Fixes
