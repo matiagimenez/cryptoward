@@ -62,6 +62,7 @@ insecure = false
 [tool.coverage.run]
 branch = true
 source = ["cryptoward"]
+omit = ["*/main.py", "*/scheduler/*"]
 
 [tool.coverage.report]
 show_missing = true

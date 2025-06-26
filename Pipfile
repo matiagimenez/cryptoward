@@ -11,6 +11,7 @@ pydantic-settings = "~=2.7"
 loguru = "~=0.7"
 kafka-python = "~=2.2"
 inject = "~=5.2"
+scheduler = "~=0.8"
 
 [dev-packages]
 pre-commit = "==4.1.0"

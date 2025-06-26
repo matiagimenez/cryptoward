@@ -7,5 +7,7 @@ class ApplicationSettings(BaseSettings):
     KAFKA_HOST: str = "localhost:29092"
     KAFKA_TOPIC: str = "cryptoward-events"
 
+    SCHEDULE_TIME_IN_MINUTES: int = 1
+
 
 Settings = ApplicationSettings()

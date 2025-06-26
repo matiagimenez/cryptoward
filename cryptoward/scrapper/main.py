@@ -1,21 +1,14 @@
-import inject
-
-from cryptoward.event_handler import Event, EventHandler
 from cryptoward.injections import Environment, configure_injections
-from cryptoward.scrapper import Scrapper, Selector
+from cryptoward.scheduler import JobScheduler
+from cryptoward.settings import Settings
+
+from .job import job
 
 
 def main() -> None:
-    selector = Selector(
-        element="span", data_attributes={"data-test": "text-cdp-price-display"}
-    )
-    event_handler = inject.instance(EventHandler)
-    scrapper = Scrapper(selector=selector)
-    cryptocurrencies = ["bitcoin", "ethereum", "dogecoin"]
-    for currency in cryptocurrencies:
-        price = scrapper.fetch_cryptocurrency(currency)
-        event = Event(currency=currency, price=price)
-        event_handler.send_event(event)
+    job_scheduler = JobScheduler()
+    job_scheduler.register_job(job, minutes=Settings.SCHEDULE_TIME_IN_MINUTES)
+    job_scheduler.execute_jobs()
 
 
 if __name__ == "__main__":
