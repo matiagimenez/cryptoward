@@ -1,41 +1,25 @@
 # Cryptoward
 
-Build an end-to-end streaming pipeline that scrapes crypto prices and stores them for real-time or batch analysis.
+**Cryptoward** is an end-to-end real-time data pipeline that scrapes cryptocurrency prices from the web, publishes them to Kafka, stores them in PostgreSQL, and exposes the data via a RESTful API using FastAPI.
 
-## Build with
+1. **Web Scraping**: Periodically fetch crypto prices from public websites.
+2. **Event Streaming**: Send scraped data as Kafka events for decoupled, real-time processing.
+3. **Data Storage**: Persist the events in a PostgreSQL database for further analysis.
+4. **REST API**: Serve historical and real-time crypto price data to consumers via FastAPI.
+
+## 🛠️ Built With
 
 - [Python](https://www.python.org/)
 - [Docker](https://www.docker.com/)
-- [Spark](https://spark.apache.org/docs/latest/api/python/index.html)
 - [Beautifulsoup4](https://pypi.org/project/beautifulsoup4/)
 - [Kafka](https://kafka.apache.org/)
 - [PostgreSQL](https://www.postgresql.org/)
-- [Grafana](https://grafana.com/)
+- [FastAPI](https://fastapi.tiangolo.com/)
 
-## **Features**
+## ⚙️ Features
 
-1. **Data Source Scrapping**
-2. **Streaming with Kafka**
-3. **ETL Processing with Spark Streaming**
-4. **Storage on PostgreSQL**
-5. **Visualization in Grafana**
-
-## **Instructions**
-
-1. Install dependencies
-
-```sh
-pipenv install --dev
-```
-
-2. Activate the virtual environment
-
-```sh
-pipenv shell
-```
-
-3. Run the application
-
-```sh
-pipenv run start
-```
+- 🔄 **Real-time Web Scraping** of selected cryptocurrency sources
+- 📬 **Kafka-based Streaming** of price events
+- 💾 **Persistent Storage** using PostgreSQL
+- 🌐 **RESTful API** for querying current and historical price data
+- 🐳 **Dockerized Architecture** for easy setup and local testing
