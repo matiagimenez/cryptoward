@@ -131,3 +131,6 @@ logs
 
 # Ruff
 .ruff_cache
+
+# SQLite DB
+test.db

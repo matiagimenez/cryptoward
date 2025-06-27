@@ -12,6 +12,7 @@ loguru = "~=0.7"
 kafka-python = "~=2.2"
 inject = "~=5.2"
 scheduler = "~=0.8"
+sqlmodel = "~=0.0.24"
 
 [dev-packages]
 pre-commit = "==4.1.0"
