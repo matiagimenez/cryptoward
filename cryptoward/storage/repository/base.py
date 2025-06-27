@@ -17,6 +17,9 @@ class StorageRepository(ABC, Generic[T]):
     def add(self, entity: T) -> T: ...
 
     @abstractmethod
+    def delete_all(self) -> None: ...
+
+    @abstractmethod
     def get_by_id(self, id_: UUID) -> T | None: ...
 
     @abstractmethod

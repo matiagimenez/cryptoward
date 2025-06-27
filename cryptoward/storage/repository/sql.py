@@ -25,7 +25,15 @@ class SQLStorageRepository(StorageRepository, Generic[T]):
         with self.session as session:
             session.add(entity)
             session.commit()
+            session.refresh(entity)
         return entity
+
+    def delete_all(self) -> None:
+        with self.session as session:
+            entities = self.get_all()
+            for entity in entities:
+                session.delete(entity)
+            session.commit()
 
     def get_by_id(self, id_: UUID) -> T | None:
         with self.session as session:
