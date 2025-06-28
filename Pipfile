@@ -33,4 +33,4 @@ python_version = "3.12"
 [scripts]
 format = "pre-commit run --all-files"
 test = "pytest --cov=cryptoward --cov-report=term-missing"
-producer = "python -m cryptoward.scrapper.main"
+producer = "python -m cryptoward.price_scrapper.main"

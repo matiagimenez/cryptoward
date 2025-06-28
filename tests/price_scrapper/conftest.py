@@ -1,6 +1,6 @@
 import pytest
 
-from cryptoward.scrapper import Scrapper, Selector
+from cryptoward.price_scrapper import PriceScrapper, Selector
 from cryptoward.settings import Settings
 
 
@@ -30,13 +30,13 @@ def non_matching_selector() -> Selector:
 
 
 @pytest.fixture
-def scrapper(selector: Selector) -> Scrapper:
-    return Scrapper(selector=selector)
+def scrapper(selector: Selector) -> PriceScrapper:
+    return PriceScrapper(selector=selector)
 
 
 @pytest.fixture
-def scrapper_with_non_matching_selector(non_matching_selector: Selector) -> Scrapper:
-    return Scrapper(selector=non_matching_selector)
+def scrapper_with_non_matching_selector(non_matching_selector: Selector) -> PriceScrapper:
+    return PriceScrapper(selector=non_matching_selector)
 
 
 @pytest.fixture

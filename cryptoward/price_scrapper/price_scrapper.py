@@ -11,7 +11,7 @@ class Selector(BaseModel):
     data_attributes: dict[str, str] = Field(default_factory=dict)
 
 
-class Scrapper(BaseModel):
+class PriceScrapper(BaseModel):
     selector: Selector
 
     @property
