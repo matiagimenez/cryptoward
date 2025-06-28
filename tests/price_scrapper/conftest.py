@@ -35,7 +35,9 @@ def scrapper(selector: Selector) -> PriceScrapper:
 
 
 @pytest.fixture
-def scrapper_with_non_matching_selector(non_matching_selector: Selector) -> PriceScrapper:
+def scrapper_with_non_matching_selector(
+    non_matching_selector: Selector,
+) -> PriceScrapper:
     return PriceScrapper(selector=non_matching_selector)
 
 

@@ -13,12 +13,16 @@ def test_fetch_page_gets_response(scrapper: PriceScrapper, valid_url: str) -> No
 
 
 @pytest.mark.vcr
-def test_fetch_invalid_page_gets_none(scrapper: PriceScrapper, invalid_url: str) -> None:
+def test_fetch_invalid_page_gets_none(
+    scrapper: PriceScrapper, invalid_url: str
+) -> None:
     response = scrapper.fetch_page(invalid_url)
     assert response is None
 
 
-def test_extract_price(scrapper: PriceScrapper, html_page: str, expected_price: str) -> None:
+def test_extract_price(
+    scrapper: PriceScrapper, html_page: str, expected_price: str
+) -> None:
     price = scrapper.extract_price(html_page)
     assert price == expected_price
 
