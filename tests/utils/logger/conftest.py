@@ -6,7 +6,7 @@ from cryptoward.utils import Level, get_logger
 
 
 @pytest.fixture
-def capture_logs() -> Generator[list[str], None, None]:
+def capture_logs() -> Generator[list[str]]:
     logger = get_logger()
     output = []
     handler_id = logger.add(output.append)

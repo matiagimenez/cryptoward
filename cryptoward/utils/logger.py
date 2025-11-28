@@ -6,7 +6,7 @@ from loguru import logger
 from loguru._logger import Logger
 
 
-class Level(str, Enum):
+class Level(Enum):
     INFO = "INFO"
     WARNING = "WARNING"
     ERROR = "ERROR"

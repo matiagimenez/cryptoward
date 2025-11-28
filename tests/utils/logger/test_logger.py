@@ -4,7 +4,7 @@ from cryptoward.utils import Level, log
 
 
 def test_log(
-    capture_logs: Generator[list[str], None, None], log_level: Level, message: str
+    capture_logs: Generator[list[str]], log_level: Level, message: str
 ) -> None:
     log(message, log_level)
     logs = list(capture_logs)
