@@ -1,7 +1,7 @@
 # The workflow checks out the repository, installs pre-commit, and runs the autoupdate command.
 # If there are any updates, it creates a pull request with the changes.
 
-name: Pre-commit update
+name: Pre-commit Update
 
 on:
   schedule:
@@ -19,25 +19,32 @@ jobs:
 
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v6
+      - uses: actions/setup-python@v6
         with:
-          python-version: '3.11'
+          python-version: '3.13'
 
-      - name: Install pre-commit
-        run: pip install pre-commit
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: '0.9.11'
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          uv sync --all-groups --frozen
 
       - name: Autoupdate pre-commit hooks
         working-directory: '.'
-        run: pre-commit autoupdate
+        run: uv run pre-commit autoupdate
 
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v7
         env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          token: ${{ env.GITHUB_TOKEN }}
-          branch: matiagimenez/pre-commit-autoupdate
+          token: ${{ env.GH_TOKEN }}
+          branch: chore/pre-commit-autoupdate
           title: Update pre-commit hooks
           commit-message: 'chore(config): update pre-commit hooks'
           body: |

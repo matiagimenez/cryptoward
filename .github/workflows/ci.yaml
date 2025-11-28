@@ -16,51 +16,32 @@ jobs:
     name: Lint
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          token: ${{ env.GH_TOKEN }}
           fetch-depth: 0
 
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
         with:
-          python-version: '3.12'
+          python-version: '3.13'
 
-      - name: Install pre-commit
-        run: pip install pre-commit
-
-      - name: Autoupdate pre-commit hooks
-        run: |
-          pre-commit autoupdate
-          differences=$(git diff | xargs)
-
-          if [ -z "$differences" ]; then
-            echo "No changes needed"
-            exit 0
-          fi
-
-          echo "::error::The pre-commit hooks are outdated"
-          echo "$differences"
-
-          git switch "${GITHUB_HEAD_REF:-$(git rev-parse --abbrev-ref HEAD)}"
-          git config --global user.email "$(git log -1 --pretty=format:'%ae' | xargs)"
-          git config --global user.name "${{ github.actor }}"
-          git add .pre-commit-config.yaml
-          git commit -m "chore(config): update pre-commit hooks"
-          git push
-
-          sleep 15
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: '0.9.11'
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install pipenv
-          pipenv install --dev
+          uv sync --all-groups --frozen
 
       - name: Run lint and format checks
         id: format
         run: |
-          pipenv run format
+          uv run poe format
 
       - name: Bump version and update changelog
         if: github.ref == 'refs/heads/main'
@@ -77,17 +58,54 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
-      - name: Set up Python 3.12
+      - name: Set up Python 3.13
         uses: actions/setup-python@v5
         with:
-          python-version: '3.12'
+          python-version: '3.13'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: '0.9.11'
+          python-version: '3.13'
 
       - name: Install dependencies
         run: |
-          python -m pip install --upgrade pip
-          pip install pipenv
-          pipenv install --dev
+          uv sync --all-groups --frozen
 
       - name: Run unit tests
         run: |
-          pipenv run test
+          uv run poe test
+
+  versioning:
+    name: Versioning
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+        env:
+          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+        with:
+          token: ${{ env.GH_TOKEN }}
+          fetch-depth: 0
+
+      - name: Set up Python 3.13
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.13'
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v7
+        with:
+          version: '0.9.11'
+          python-version: '3.13'
+
+      - name: Install dependencies
+        run: |
+          uv sync --all-groups --frozen
+
+
+      - name: Bump version and update changelog
+        if: github.ref == 'refs/heads/main'
+        uses: python-semantic-release/python-semantic-release@v9.21.1
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}

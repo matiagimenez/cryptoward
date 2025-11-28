@@ -1,7 +1,9 @@
+# pylint: disable=no-name-in-module
 import datetime as dt
 import time
+from collections.abc import Callable
 from dataclasses import dataclass
-from typing import Any, Callable
+from typing import Any
 
 from scheduler import Scheduler
 
@@ -15,6 +17,10 @@ class JobScheduler:
         if self._scheduler is None:
             self._scheduler = Scheduler()
         return self._scheduler
+
+    @scheduler.setter
+    def scheduler(self, scheduler: Scheduler) -> None:
+        self._scheduler = scheduler
 
     def register_job(self, job: Callable[..., Any], minutes: int) -> None:
         self.scheduler.cyclic(dt.timedelta(minutes=minutes), job)

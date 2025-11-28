@@ -1,7 +1,7 @@
 import pytest
 
 from cryptoward.scrapper import Scrapper, Selector
-from cryptoward.settings import Settings
+from cryptoward.utils import Settings
 
 
 @pytest.fixture

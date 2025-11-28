@@ -1,198 +1,126 @@
 [project]
-name = "Cryptoward"
-version = "0.0.1"
+name = "cryptoward"
+version = "0.3.1"
 description = "Real time cryptocurrency price ETL pipeline"
-authors = [{ name = "Matias Gimenez", email = "matiasgimenez.dev@gmail.com" }]
 readme = "README.md"
 license = { text = "MIT" }
+authors = [ { name = "Matias Gimenez", email = "matiasgimenez.dev@gmail.com" } ]
+requires-python = ">=3.13"
 
-[project.urls]
-Repository = "https://github.com/matiagimenez/cryptoward"
-
-
-##################################
-# semantic release configuration #
-##################################
-[tool.semantic_release]
-branch = "main"
-commit_message = "chore(release): release version {version}"
-version_variables = ["cryptoward/__init__.py:__version__"]
-
-[tool.semantic_release.branches.main]
-match = "(main|master)"
-prerelease_token = "rc"
-prerelease = false
-
-[tool.semantic_release.changelog.default_templates]
-changelog_file = "CHANGELOG.md"
-
-[tool.semantic_release.commit_author]
-env = "GIT_COMMIT_AUTHOR"
-default = "semantic-release <semantic-release>"
-
-[tool.semantic_release.changelog.environment]
-block_start_string = "{%"
-block_end_string = "%}"
-variable_start_string = "{{"
-variable_end_string = "}}"
-comment_start_string = "{#"
-comment_end_string = "#}"
-trim_blocks = false
-lstrip_blocks = false
-newline_sequence = "\n"
-keep_trailing_newline = false
-extensions = []
-autoescape = true
-
-[tool.semantic_release.commit_parser_options]
-allowed_tags = ["chore", "docs", "feat", "fix", "refactor"]
-minor_tags = ["feat"]
-patch_tags = ["fix", "perf"]
-default_bump_level = 0
-
-[tool.semantic_release.remote]
-name = "origin"
-type = "github"
-ignore_token_for_push = false
-insecure = false
-
-##########################
-# coverage configuration #
-##########################
-[tool.coverage.run]
-branch = true
-source = ["cryptoward"]
-omit = ["*/main.py", "*/scheduler/*"]
-
-[tool.coverage.report]
-show_missing = true
-skip_covered = true
-fail_under = 0
-exclude_also = [
-      "def __repr__",
-      "if self\\.debug",
-
-      "raise AssertionError",
-      "raise NotImplementedError",
-
-      "if 0:",
-      "if __name__ == .__main__.:",
-
-      "@(abc\\.)?abstractmethod",
+classifiers = [
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.13",
+  "Programming Language :: Python :: 3.14",
+]
+dependencies = [
+  "beautifulsoup4>=4.14",
+  "inject>=5.3",
+  "loguru>=0.7",
+  "pydantic>=2.12",
+  "pydantic-settings>=2.12",
+  "requests>=2.32",
+  "scheduler>=0.8",
 ]
 
-[tool.coverage.xml]
-output = "coverage.xml"
+urls.repository = "https://github.com/matiagimenez/cryptoward"
 
-[tool.coverage.html]
-directory = "htmlcov"
-title = "Coverage Report"
+[dependency-groups]
 
-######################
-# ruff configuration #
-######################
+dev = [
+  "ipykernel>=7.1",
+  "poethepoet>=0.37",
+  "polyfactory>=3.1",
+  "pre-commit>=4.4",
+  "pylint>=4",
+  "pytest>=9",
+  "pytest-cov>=7",
+  "pytest-mock>=3.15",
+  "pytest-recording>=0.13",
+  "ruff>=0.14",
+]
 
 [tool.ruff]
-fix = true
-preview = true
 exclude = [
-      ".git",
-      ".mypy_cache",
-      ".pyenv",
-      ".pytest_cache",
-      ".pytype",
-      ".ruff_cache",
-      ".venv",
-      ".vscode",
-      "_build",
-      "buck-out",
-      "build",
-      "dist",
-      "site-packages",
-      "venv",
-      "playground",
+  ".git",
+  ".mypy_cache",
+  ".pyenv",
+  ".pytest_cache",
+  ".pytype",
+  ".ruff_cache",
+  ".venv",
+  ".vscode",
+  "_build",
+  "buck-out",
+  "build",
+  "dist",
+  "playground",
+  "site-packages",
+  "venv",
 ]
 
+preview = true
+fix = true
+format.indent-style = "space"
+format.quote-style = "double"
+format.line-ending = "auto"
+format.skip-magic-trailing-comma = false
 
-[tool.ruff.lint]
-extend-select = [
-      "FBT",
-      "COM",
-      "E",
-      "UP",
-      "BLE",
-      "B",
-      'A',
-      'C4',
-      'ICN',
-      'PIE',
-      'RSE',
-      'SIM',
-      'ARG',
-      'G',
-      'ISC',
-      'T20',
-      'EM',
-      'SLF',
-      'PT',
-      'RET',
-      'TID',
-      'PTH',
-      'LOG',
-      'TD',
-      'FIX',
-      'TRY',
-      'I',
-      'ERA',
-      'PERF',
-      'FURB',
-      'RUF',
+lint.extend-select = [
+  "A",
+  "ARG",
+  "B",
+  "BLE",
+  "C4",
+  "COM",
+  "E",
+  "EM",
+  "ERA",
+  "FBT",
+  "FIX",
+  "FURB",
+  "G",
+  "I",
+  "ICN",
+  "ISC",
+  "LOG",
+  "PERF",
+  "PIE",
+  "PT",
+  "PTH",
+  "RET",
+  "RSE",
+  "RUF",
+  "SIM",
+  "SLF",
+  "T20",
+  "TD",
+  "TID",
+  "TRY",
+  "UP",
 ]
-ignore = ["COM812", "ISC001", "TD003", "FIX002", "BLE001", "TRY301"]
-
-[tool.ruff.format]
-quote-style = "double"
-indent-style = "space"
-skip-magic-trailing-comma = false
-line-ending = "auto"
-
-######################
-# mypy configuration #
-######################
-[tool.mypy]
-python_version = "3.12"
-disallow_untyped_defs = true
-show_error_codes = true
-no_implicit_optional = true
-warn_return_any = true
-warn_unused_ignores = true
-disable_error_code = ["var-annotated"]
-
-########################
-# pylint configuration #
-########################
+lint.ignore = [ "BLE001", "COM812", "FIX002", "ISC001", "TD003", "TRY301" ]
 
 [tool.pylint.main]
 load-plugins = [
-      "pylint.extensions.bad_builtin",
-      "pylint.extensions.code_style",
-      "pylint.extensions.comparison_placement",
-      "pylint.extensions.consider_refactoring_into_while_condition",
-      "pylint.extensions.dunder",
-      "pylint.extensions.eq_without_hash",
-      "pylint.extensions.for_any_all",
-      "pylint.extensions.mccabe",
-      "pylint.extensions.no_self_use",
-      "pylint.extensions.overlapping_exceptions",
-      "pylint.extensions.private_import",
-      "pylint.extensions.redefined_loop_name",
-      "pylint.extensions.set_membership",
+  "pylint.extensions.bad_builtin",
+  "pylint.extensions.code_style",
+  "pylint.extensions.comparison_placement",
+  "pylint.extensions.consider_refactoring_into_while_condition",
+  "pylint.extensions.dunder",
+  "pylint.extensions.eq_without_hash",
+  "pylint.extensions.for_any_all",
+  "pylint.extensions.mccabe",
+  "pylint.extensions.no_self_use",
+  "pylint.extensions.overlapping_exceptions",
+  "pylint.extensions.private_import",
+  "pylint.extensions.redefined_loop_name",
+  "pylint.extensions.set_membership",
 ]
 
 [tool.pylint."MESSAGES CONTROL"]
-fail-on = ["I"]
+fail-on = [ "I" ]
 fail-under = '10'
-ignore = ['.git', 'playground.py', "playground/*"]
+ignore = [ '.git', 'playground.py', "playground/*" ]
 ignore-patterns = ''
 jobs = 4
 limit-inference-results = 100
@@ -350,7 +278,6 @@ ignore-docstrings = 'yes'
 ignore-imports = 'no'
 min-similarity-lines = 4
 
-
 [tool.pylint.STRING]
 check-quote-consistency = 'no'
 check-str-concat-over-line-jumps = 'no'
@@ -387,7 +314,7 @@ argument-naming-style = "snake_case"
 argument-rgx = "[a-z_][a-z0-9_]{2,30}$"
 attr-naming-style = "snake_case"
 attr-rgx = "[a-z_][a-z0-9_]{2,30}$"
-bad-names = ["foo", "bar", "baz", "toto", "tutu", "tata"]
+bad-names = [ "foo", "bar", "baz", "toto", "tutu", "tata" ]
 class-attribute-naming-style = "any"
 class-attribute-rgx = "([A-Za-z_][A-Za-z0-9_]{2,30}|(__.*__))$"
 class-const-naming-style = "UPPER_CASE"
@@ -398,7 +325,7 @@ const-rgx = "(([A-Z_][A-Z0-9_]*)|(__.*__))$"
 docstring-min-length = -1
 function-naming-style = "snake_case"
 function-rgx = "[a-z_][a-z0-9_]{2,30}$"
-good-names = ["i", "j", "k", "ex", "Run", "_"]
+good-names = [ "i", "j", "k", "ex", "Run", "_" ]
 include-naming-hint = true
 inlinevar-naming-style = "any"
 inlinevar-rgx = "[A-Za-z_][A-Za-z0-9_]*$"
@@ -407,18 +334,18 @@ method-rgx = "[a-z_][a-z0-9_]{2,30}$"
 module-naming-style = "snake_case"
 module-rgx = "(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$"
 no-docstring-rgx = "^_"
-property-classes = ["abc.abstractproperty"]
+property-classes = [ "abc.abstractproperty" ]
 variable-naming-style = "snake_case"
 variable-rgx = "[a-z_][a-z0-9_]{2,30}$"
 
 [tool.pylint.classes]
-defining-attr-methods = ["__init__", "__new__", "setUp"]
-exclude-protected = ["_asdict", "_fields", "_replace", "_source", "_make"]
-valid-classmethod-first-arg = ["cls"]
-valid-metaclass-classmethod-first-arg = ["mcs"]
+defining-attr-methods = [ "__init__", "__new__", "setUp" ]
+exclude-protected = [ "_asdict", "_fields", "_replace", "_source", "_make" ]
+valid-classmethod-first-arg = [ "cls" ]
+valid-metaclass-classmethod-first-arg = [ "mcs" ]
 
 [tool.pylint.deprecated_builtins]
-bad-functions = ["map", "filter"]
+bad-functions = [ "map", "filter" ]
 
 [tool.pylint.design]
 max-args = 5
@@ -433,7 +360,7 @@ max-returns = 6
 max-statements = 30
 
 [tool.pylint.exceptions]
-overgeneral-exceptions = ["'builtins.Exception'"]
+overgeneral-exceptions = [ "'builtins.Exception'" ]
 
 [tool.pylint.format]
 indent-after-paren = 4
@@ -442,66 +369,65 @@ max-line-length = 120
 max-module-lines = 300
 
 [tool.pylint.imports]
-deprecated-modules = ["regsub", "TERMIOS", "Bastion", "rexec"]
-known-third-party = ["enchant"]
+deprecated-modules = [ "regsub", "TERMIOS", "Bastion", "rexec" ]
+known-third-party = [ "enchant" ]
 
 [tool.pylint.logging]
 logging-format-style = "old"
-logging-modules = ["logging"]
+logging-modules = [ "logging" ]
 
 [tool.pylint."messages control"]
 confidence = [
-      "HIGH",
-      "CONTROL_FLOW",
-      "INFERENCE",
-      "INFERENCE_FAILURE",
-      "UNDEFINED",
+  "HIGH",
+  "CONTROL_FLOW",
+  "INFERENCE",
+  "INFERENCE_FAILURE",
+  "UNDEFINED",
 ]
 disable = [
-      "redefined-outer-name",
-      "missing-function-docstring",
-      "missing-module-docstring",
-      "import-error",
-      "invalid-name",
-      "logging-fstring-interpolation",
-      "consider-using-assignment-expr",
-      "subprocess-run-check",
-      "unused-import",                  # Check and fix by Ruff
-      "too-few-public-methods",         # Taskweaver plugins usually have few methods
+  "redefined-outer-name",
+  "missing-function-docstring",
+  "missing-module-docstring",
+  "import-error",
+  "invalid-name",
+  "logging-fstring-interpolation",
+  "consider-using-assignment-expr",
+  "subprocess-run-check",
+  "unused-import",                  # Check and fix by Ruff
+  "too-few-public-methods",         # Taskweaver plugins usually have few methods
 
 ]
 enable = [
-      "bad-inline-option",
-      "file-ignored",
-      "useless-suppression",
-      "deprecated-pragma",
-      "use-symbolic-message-instead",
+  "bad-inline-option",
+  "file-ignored",
+  "useless-suppression",
+  "deprecated-pragma",
+  "use-symbolic-message-instead",
 
 ]
 
 [tool.pylint.method_args]
 timeout-methods = [
-      "requests.api.delete",
-      "requests.api.get",
-      "requests.api.head",
-      "requests.api.options",
-      "requests.api.patch",
-      "requests.api.post",
-      "requests.api.put",
-      "requests.api.request",
+  "requests.api.delete",
+  "requests.api.get",
+  "requests.api.head",
+  "requests.api.options",
+  "requests.api.patch",
+  "requests.api.post",
+  "requests.api.put",
+  "requests.api.request",
 ]
 
 [tool.pylint.miscellaneous]
-notes = ["FIXME", "XXX", "TODO"]
+notes = [ "FIXME", "XXX", "TODO" ]
 
 [tool.pylint.refactoring]
 max-nested-blocks = 5
-never-returning-functions = ["sys.exit", "argparse.parse_error"]
+never-returning-functions = [ "sys.exit", "argparse.parse_error" ]
 
 [tool.pylint.reports]
 evaluation = "10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)"
 score = true
-
 
 [tool.pylint.similarities]
 ignore-comments = true
@@ -517,17 +443,17 @@ spelling-ignore-comment-directives = "fmt: on,fmt: off,noqa:,noqa,nosec,isort:sk
 check-str-concat-over-line-jumps = true
 
 [tool.pylint.typecheck]
-contextmanager-decorators = ["contextlib.contextmanager"]
+contextmanager-decorators = [ "contextlib.contextmanager" ]
 ignore-none = true
 ignore-on-opaque-inference = true
 ignored-checks-for-mixins = [
-      "no-member",
-      "not-async-context-manager",
-      "not-context-manager",
-      "attribute-defined-outside-init",
+  "no-member",
+  "not-async-context-manager",
+  "not-context-manager",
+  "attribute-defined-outside-init",
 
 ]
-ignored-classes = ["optparse.Values", "thread._local", "_thread._local"]
+ignored-classes = [ "optparse.Values", "thread._local", "_thread._local" ]
 missing-member-hint = true
 missing-member-hint-distance = 1
 missing-member-max-choices = 1
@@ -535,7 +461,93 @@ mixin-class-rgx = ".*[Mm]ixin"
 
 [tool.pylint.variables]
 allow-global-unused-variables = true
-callbacks = ["cb_", "_cb"]
+callbacks = [ "cb_", "_cb" ]
 dummy-variables-rgx = "(_+[a-zA-Z0-9]*?$)|dummy"
 ignored-argument-names = "_.*"
-redefining-builtins-modules = ["six.moves", "future.builtins"]
+redefining-builtins-modules = [ "six.moves", "future.builtins" ]
+
+[tool.coverage.run]
+branch = true
+source = [ "cryptoward" ]
+omit = [ "*/main.py", "*/scheduler/*" ]
+
+[tool.coverage.report]
+show_missing = true
+skip_covered = true
+fail_under = 0
+exclude_also = [
+  "def __repr__",
+  "if self\\.debug",
+
+  "raise AssertionError",
+  "raise NotImplementedError",
+
+  "if 0:",
+  "if __name__ == .__main__.:",
+
+  "@(abc\\.)?abstractmethod",
+]
+
+[tool.coverage.xml]
+output = "coverage.xml"
+
+[tool.coverage.html]
+directory = "htmlcov"
+title = "Coverage Report"
+
+[tool.mypy]
+python_version = "3.12"
+disallow_untyped_defs = true
+show_error_codes = true
+no_implicit_optional = true
+warn_return_any = true
+warn_unused_ignores = true
+disable_error_code = [ "var-annotated" ]
+
+[tool.poe.tasks]
+test = "pytest --cov=cryptoward --cov-report=term-missing"
+main = "python -m cryptoward.main"
+format = "pre-commit run --all-files --verbose"
+
+[tool.semantic_release]
+branch = "main"
+commit_message = "chore(release): release version {version}"
+version_variables = [ "cryptoward/__init__.py:__version__" ]
+
+[tool.semantic_release.branches.main]
+match = "(main|master)"
+prerelease_token = "rc"
+prerelease = false
+
+[tool.semantic_release.changelog.default_templates]
+changelog_file = "CHANGELOG.md"
+
+[tool.semantic_release.commit_author]
+env = "GIT_COMMIT_AUTHOR"
+default = "semantic-release <semantic-release>"
+
+[tool.semantic_release.changelog.environment]
+block_start_string = "{%"
+block_end_string = "%}"
+variable_start_string = "{{"
+variable_end_string = "}}"
+comment_start_string = "{#"
+comment_end_string = "#}"
+trim_blocks = false
+lstrip_blocks = false
+newline_sequence = "\n"
+keep_trailing_newline = false
+extensions = [  ]
+autoescape = true
+
+[tool.semantic_release.commit_parser_options]
+allowed_tags = [ "chore", "docs", "feat", "fix", "refactor" ]
+minor_tags = [ "feat" ]
+patch_tags = [ "fix", "perf" ]
+default_bump_level = 0
+
+[tool.semantic_release.remote]
+name = "origin"
+type = "github"
+ignore_token_for_push = false
+insecure = false
