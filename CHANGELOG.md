@@ -1,6 +1,61 @@
 # CHANGELOG
 
 
+## v0.4.0 (2025-11-28)
+
+### Bug Fixes
+
+- **config**: Migrate to use uv as package manager
+  ([`87488cd`](https://github.com/matiagimenez/cryptoward/commit/87488cdeb5d095f7ff4b45262410945ae2a3ccd3))
+
+- **config**: Remove duplicated bump version
+  ([`2538efd`](https://github.com/matiagimenez/cryptoward/commit/2538efd72e9d8573aee99866f119fb9b53cd347d))
+
+### Chores
+
+- **cicd**: Updates ci/cd workflows
+  ([`91b4d2e`](https://github.com/matiagimenez/cryptoward/commit/91b4d2e2005e8237fa9b890f1436e5f5358959d9))
+
+- **config**: Fix lint issues
+  ([`4f1539b`](https://github.com/matiagimenez/cryptoward/commit/4f1539b4e1482e974cad3424346f0b3d9bdc5ba4))
+
+- **config**: Fix ruff issues
+  ([`3b10252`](https://github.com/matiagimenez/cryptoward/commit/3b10252f8d09f05c488283796648257426f0adfd))
+
+- **config**: Remove not used files and create utils module
+  ([`a20fc9d`](https://github.com/matiagimenez/cryptoward/commit/a20fc9d265d7627834edbbe24a8073e0f17b91ed))
+
+- **config**: Update pre-commit hooks
+  ([`c4a1442`](https://github.com/matiagimenez/cryptoward/commit/c4a1442cf4474d594638152255d5ad105d5c4b2e))
+
+- **config**: Update pre-commit hooks
+  ([`1b33cd6`](https://github.com/matiagimenez/cryptoward/commit/1b33cd61ccaae5d9f7f0b0960a6e9c917f53a628))
+
+- **config**: Update pre-commit hooks
+  ([`6d8b70f`](https://github.com/matiagimenez/cryptoward/commit/6d8b70ffd57a7ea294abf4536a2e6bd023a6c2ea))
+
+- **config**: Update pre-commit hooks
+  ([`87f5311`](https://github.com/matiagimenez/cryptoward/commit/87f531104b6a479242150354a53fcfc914606a09))
+
+- **config**: Update pre-commit hooks
+  ([`7b4dd56`](https://github.com/matiagimenez/cryptoward/commit/7b4dd562c9c652ee518a45a51dfa7e3cf86daa74))
+
+- **config**: Update pre-commit hooks
+  ([`c538c90`](https://github.com/matiagimenez/cryptoward/commit/c538c90ebcebd46290f759fce1d96296c3cba1e6))
+
+- **config**: Update pre-commit hooks
+  ([`b2b6cca`](https://github.com/matiagimenez/cryptoward/commit/b2b6ccaf6e2a280e0938b8666d249ad46961262b))
+
+### Features
+
+- **config**: Add job scheduler and a background task to fetch cryptocurrency prices.
+  ([`408b3be`](https://github.com/matiagimenez/cryptoward/commit/408b3be62178b4747a40d2f0756af31f9b1de7b9))
+
+- **config**: Introduce scheduled cryptocurrency price fetching, application settings, and initial
+  test suite.
+  ([`281c539`](https://github.com/matiagimenez/cryptoward/commit/281c539b1efcc2861309809e95adea2f2a4fceff))
+
+
 ## v0.3.1 (2025-06-26)
 
 ### Bug Fixes
