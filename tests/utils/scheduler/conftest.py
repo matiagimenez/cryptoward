@@ -1,3 +1,4 @@
+# pylint: disable=no-name-in-module
 from unittest.mock import MagicMock
 
 import pytest
