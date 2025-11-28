@@ -1,17 +1,13 @@
-import inject
-
-from cryptoward.event_handler import Event, EventHandler
 from cryptoward.scrapper import Scrapper, Selector
+from cryptoward.utils import Level, log
 
 
 def job() -> None:
     selector = Selector(
         element="span", data_attributes={"data-test": "text-cdp-price-display"}
     )
-    event_handler = inject.instance(EventHandler)
     scrapper = Scrapper(selector=selector)
     cryptocurrencies = ["bitcoin", "ethereum", "dogecoin"]
     for currency in cryptocurrencies:
         price = scrapper.fetch_cryptocurrency(currency)
-        event = Event(currency=currency, price=price)
-        event_handler.send_event(event)
+        log(f"{currency}: {price}", Level.INFO)

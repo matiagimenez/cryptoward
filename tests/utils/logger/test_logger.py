@@ -1,6 +1,6 @@
 from collections.abc import Generator
 
-from cryptoward.logging import Level, log
+from cryptoward.utils import Level, log
 
 
 def test_log(

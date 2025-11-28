@@ -1,6 +1,6 @@
 from cryptoward.injections import Environment, configure_injections
 from cryptoward.scheduler import JobScheduler
-from cryptoward.settings import Settings
+from cryptoward.utils import Settings
 
 from .job import job
 

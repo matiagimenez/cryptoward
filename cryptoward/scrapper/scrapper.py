@@ -2,8 +2,7 @@ import bs4
 import requests
 from pydantic import BaseModel, Field
 
-from cryptoward.logging import Level, log
-from cryptoward.settings import Settings
+from cryptoward.utils import Level, Settings, log
 
 
 class Selector(BaseModel):

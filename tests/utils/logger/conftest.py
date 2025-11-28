@@ -2,7 +2,7 @@ from collections.abc import Generator
 
 import pytest
 
-from cryptoward.logging.logger import Level, get_logger
+from cryptoward.utils import Level, get_logger
 
 
 @pytest.fixture

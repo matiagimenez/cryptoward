@@ -21,7 +21,7 @@ def get_logger() -> Logger:
         level="DEBUG",
         format="{time:YYYY-MM-DD at HH:mm:ss} | {level} | {message}",
     )
-    return logger
+    return logger  # type: ignore[return-value]
 
 
 def log(message: str, log_level: Level = Level.INFO) -> None:
