@@ -11,6 +11,6 @@ def fetch_cryptocurrency_prices() -> list[str]:
     scrapper = Scrapper(selector=selector)
     for currency in Settings.CRYPTOCURRENCIES:
         price = scrapper.fetch_cryptocurrency(currency)
-        prices.append(price)
+        prices.append(f"{currency}: {price}")
         log(f"{currency}: {price}", Level.INFO)
     return prices
