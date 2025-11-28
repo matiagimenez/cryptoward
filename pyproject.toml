@@ -25,9 +25,7 @@ dependencies = [
 urls.repository = "https://github.com/matiagimenez/cryptoward"
 
 [dependency-groups]
-#####################
-# poe configuration #
-#####################
+
 dev = [
   "ipykernel>=7.1",
   "poethepoet>=0.37",
@@ -66,9 +64,7 @@ format.indent-style = "space"
 format.quote-style = "double"
 format.line-ending = "auto"
 format.skip-magic-trailing-comma = false
-######################
-# mypy configuration #
-######################
+
 lint.extend-select = [
   "A",
   "ARG",
@@ -499,10 +495,6 @@ output = "coverage.xml"
 directory = "htmlcov"
 title = "Coverage Report"
 
-######################
-# ruff configuration #
-######################
-
 [tool.mypy]
 python_version = "3.12"
 disallow_untyped_defs = true
@@ -512,18 +504,10 @@ warn_return_any = true
 warn_unused_ignores = true
 disable_error_code = [ "var-annotated" ]
 
-########################
-# pylint configuration #
-########################
-
 [tool.poe.tasks]
 test = "pytest --cov=cryptoward --cov-report=term-missing"
 main = "python -m cryptoward.main"
 format = "pre-commit run --all-files --verbose"
-
-##################################
-# semantic release configuration #
-##################################
 
 [tool.semantic_release]
 branch = "main"
@@ -567,7 +551,3 @@ name = "origin"
 type = "github"
 ignore_token_for_push = false
 insecure = false
-
-##########################
-# coverage configuration #
-##########################
