@@ -1,6 +1,7 @@
 import pytest
 
-from cryptoward.scrapper import Scrapper, Selector
+from cryptoward.models import Element
+from cryptoward.services import CryptoService
 from cryptoward.utils import Settings
 
 
@@ -10,7 +11,7 @@ def data_attributes() -> dict[str, str]:
 
 
 @pytest.fixture
-def element() -> str:
+def tag() -> str:
     return "span"
 
 
@@ -20,23 +21,25 @@ def cryptocurrency() -> str:
 
 
 @pytest.fixture
-def selector(element: str, data_attributes: dict[str, str]) -> Selector:
-    return Selector(element=element, data_attributes=data_attributes)
+def element(tag: str, data_attributes: dict[str, str]) -> Element:
+    return Element(tag=tag, data_attributes=data_attributes)
 
 
 @pytest.fixture
-def non_matching_selector() -> Selector:
-    return Selector(element="test_element")
+def non_matching_element() -> Element:
+    return Element(tag="test_element")
 
 
 @pytest.fixture
-def scrapper(selector: Selector) -> Scrapper:
-    return Scrapper(selector=selector)
+def crypto_service(element: Element) -> CryptoService:
+    return CryptoService(element=element)
 
 
 @pytest.fixture
-def scrapper_with_non_matching_selector(non_matching_selector: Selector) -> Scrapper:
-    return Scrapper(selector=non_matching_selector)
+def crypto_service_with_non_matching_element(
+    non_matching_element: Element,
+) -> CryptoService:
+    return CryptoService(element=non_matching_element)
 
 
 @pytest.fixture
