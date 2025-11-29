@@ -5,6 +5,11 @@ from cryptoward.services import CryptoService
 from cryptoward.utils import Settings
 
 
+def test_build_from_settings() -> None:
+    crypto_service = CryptoService.from_settings()
+    assert isinstance(crypto_service, CryptoService)
+
+
 @pytest.mark.vcr
 def test_fetch_page_gets_response(
     crypto_service: CryptoService, valid_url: str
@@ -28,6 +33,13 @@ def test_extract_price(
 ) -> None:
     price = crypto_service.extract_price(html_page)
     assert price == expected_price
+
+
+def test_extract_price_from_unexisting_element(
+    crypto_service: CryptoService, html_page_without_price: str
+) -> None:
+    price = crypto_service.extract_price(html_page_without_price)
+    assert price == "-"
 
 
 @pytest.mark.vcr

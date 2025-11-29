@@ -61,3 +61,8 @@ def expected_price() -> str:
 def html_page(expected_price: str, tag: str, data_attributes: dict[str, str]) -> str:
     attributes = " ".join(f'{k}="{v}"' for k, v in data_attributes.items())
     return f"<{tag} {attributes}>{expected_price}</{tag}>"
+
+
+@pytest.fixture
+def html_page_without_price() -> str:
+    return "<div></div>"
