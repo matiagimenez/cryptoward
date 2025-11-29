@@ -13,4 +13,4 @@ class ApplicationSettings(BaseSettings):
         return ["bitcoin", "ethereum", "solana", "bnb", "aave", "avalanche", "monero"]
 
 
-Settings = ApplicationSettings()  # type: ignore[call-arg]
+Settings = ApplicationSettings()
