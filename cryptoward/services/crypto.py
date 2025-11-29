@@ -30,7 +30,7 @@ class CryptoService(BaseModel):
                 Level.WARNING,
             )
             return None
-        return price_element.text.strip()  # type: ignore[no-any-return]
+        return price_element.text.strip() or "-"  # type: ignore[no-any-return]
 
     def fetch_cryptocurrency_prices(self) -> list[str]:
         prices = []
@@ -41,8 +41,11 @@ class CryptoService(BaseModel):
             if not response:
                 continue
             price = self.extract_price(response.text)
-            if not price:
-                continue
-            prices.append(f"{cryptocurrency.capitalize()}: {price}")
-            log(f"{cryptocurrency.capitalize()}: {price}", Level.INFO)
+            name = (
+                cryptocurrency.capitalize()
+                if len(cryptocurrency) > 5
+                else cryptocurrency.upper()
+            )
+            prices.append(f"{name}: {price}")
+            log(f"{name}: {price}", Level.INFO)
         return prices

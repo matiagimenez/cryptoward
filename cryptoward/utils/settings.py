@@ -8,7 +8,7 @@ class ApplicationSettings(BaseSettings):
 
     @property
     def CRYPTOCURRENCIES(self) -> list[str]:
-        return ["bitcoin", "ethereum", "dogecoin"]
+        return ["bitcoin", "ethereum", "solana", "bnb", "aave", "avalanche", "monero"]
 
 
 Settings = ApplicationSettings()
