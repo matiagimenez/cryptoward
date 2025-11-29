@@ -39,8 +39,8 @@ class CryptoService(BaseModel):
                 f"Price element not found with element {self.element.model_dump}",
                 Level.WARNING,
             )
-            return None
-        return price_element.text.strip() or "-"
+            return "-"
+        return price_element.text.strip()
 
     def fetch_cryptocurrency_prices(self) -> list[str]:
         prices = []
@@ -48,8 +48,6 @@ class CryptoService(BaseModel):
         for cryptocurrency in Settings.CRYPTOCURRENCIES:
             url = f"{Settings.DATASOURCE_URL}/{cryptocurrency}"
             response = self.fetch_page(url)
-            if not response:
-                continue
             price = self.extract_price(response.text)
             name = (
                 cryptocurrency.capitalize()
