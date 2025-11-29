@@ -131,3 +131,7 @@ logs
 
 # Ruff
 .ruff_cache
+
+
+# Telegram bot storage
+*.pickle
