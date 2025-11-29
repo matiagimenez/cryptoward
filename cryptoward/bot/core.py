@@ -11,22 +11,21 @@ from telegram.ext import (
 from cryptoward.services import CryptoService
 from cryptoward.utils import Level, log
 
-WELCOME_MESSAGE = (
-    "👋 Hi! I can send you daily crypto price updates.\n\n"
-    "To set a schedule, use:\n"
-    "/set <HH.MM>\n\n"
-    "📝 Example: /set 09.30\n\n"
-    "The time is in 24h format\n"
-    "The timezone is UTC\n"
-    "If you want to remove the schedule, use:\n"
-    "/remove\n"
-)
+from .config import WELCOME_MESSAGE
 
 
 @dataclass
 class TelegramBot:
     crypto_service: CryptoService
     application: Application
+
+    @property
+    def commands(self) -> list[CommandHandler]:
+        return [
+            CommandHandler(["start", "help"], self.start),
+            CommandHandler("set", self.set_job),
+            CommandHandler("remove", self.unset_job),
+        ]
 
     async def send_prices(self, context: ContextTypes.DEFAULT_TYPE) -> None:
         prices = self.crypto_service.fetch_cryptocurrency_prices()
@@ -74,7 +73,6 @@ class TelegramBot:
 
     def run(self) -> None:
         log("Starting Cryptoward Bot", Level.INFO)
-        self.application.add_handler(CommandHandler(["start", "help"], self.start))
-        self.application.add_handler(CommandHandler("set", self.set_job))
-        self.application.add_handler(CommandHandler("remove", self.unset_job))
+        for command in self.commands:
+            self.application.add_handler(command)
         self.application.run_polling()
