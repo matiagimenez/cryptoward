@@ -15,7 +15,7 @@ class CryptoService(BaseModel):
     def from_settings(cls) -> Self:
         element = Element(
             tag=Settings.PRICE_ELEMENT_TAG,
-            data_attributes=Settings.PRICE_ELEMENT_ATTRS,
+            data_attributes=Settings.PRICE_ELEMENT_ATTRIBUTES,
         )
         return cls(element=element)
 
