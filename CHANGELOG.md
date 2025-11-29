@@ -1,6 +1,45 @@
 # CHANGELOG
 
 
+## v0.5.0 (2025-11-29)
+
+### Bug Fixes
+
+- **config**: Add bot commands helper
+  ([`1a79a6c`](https://github.com/matiagimenez/cryptoward/commit/1a79a6c03bdb5a889ca8450b24c32a96a0e217f1))
+
+- **config**: Add bot module
+  ([`f0607f9`](https://github.com/matiagimenez/cryptoward/commit/f0607f9cb407d26b4e1b8574e28b459c1052d9d7))
+
+- **config**: Rename settings
+  ([`f892adf`](https://github.com/matiagimenez/cryptoward/commit/f892adf1e3aab6998668ea4504e8927d957cb30b))
+
+- **config**: Rename settings
+  ([`2085719`](https://github.com/matiagimenez/cryptoward/commit/2085719a9ae906565122e5277166e1352ea53ecd))
+
+- **config**: Reorganize modules
+  ([`a349afd`](https://github.com/matiagimenez/cryptoward/commit/a349afd20551a5d9b0db80e31dbc532e8631ac15))
+
+- **config**: Update application settings
+  ([`e1d67ae`](https://github.com/matiagimenez/cryptoward/commit/e1d67ae49957cbe289b91d9550e1e10731172a36))
+
+- **test**: Add missing test cases
+  ([`676e7d8`](https://github.com/matiagimenez/cryptoward/commit/676e7d87dbd492a0814a44c4df6e90ce68b62458))
+
+- **test**: Add unit tests for crypto service
+  ([`7de3297`](https://github.com/matiagimenez/cryptoward/commit/7de32974634d662e51b16a1f2d39014210bb2de9))
+
+### Chores
+
+- **config**: Fix lint issues
+  ([`d1b0e19`](https://github.com/matiagimenez/cryptoward/commit/d1b0e1966044bcc6c6988c87aaed2a20e5f4836c))
+
+### Features
+
+- **config**: Implement telegram bot for scheduled updates
+  ([`8e4574b`](https://github.com/matiagimenez/cryptoward/commit/8e4574b7b4718b1f749757e1e9f03bfb9d982431))
+
+
 ## v0.4.0 (2025-11-28)
 
 ### Bug Fixes
