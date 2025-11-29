@@ -40,7 +40,7 @@ class CryptoService(BaseModel):
                 Level.WARNING,
             )
             return "-"
-        return price_element.text.strip()
+        return price_element.text.strip()  # type: ignore[no-any-return]
 
     def fetch_cryptocurrency_prices(self) -> list[str]:
         prices = []
@@ -48,6 +48,8 @@ class CryptoService(BaseModel):
         for cryptocurrency in Settings.CRYPTOCURRENCIES:
             url = f"{Settings.DATASOURCE_URL}/{cryptocurrency}"
             response = self.fetch_page(url)
+            if not response:  # pragma: no cover
+                continue
             price = self.extract_price(response.text)
             name = (
                 cryptocurrency.capitalize()

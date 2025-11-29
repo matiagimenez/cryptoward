@@ -4,7 +4,7 @@ version = "0.3.1"
 description = "Real time cryptocurrency price ETL pipeline"
 readme = "README.md"
 license = { text = "MIT" }
-authors = [{ name = "Matias Gimenez", email = "matiasgimenez.dev@gmail.com" }]
+authors = [ { name = "Matias Gimenez", email = "matiasgimenez.dev@gmail.com" } ]
 requires-python = ">=3.13"
 
 classifiers = [
@@ -99,7 +99,7 @@ lint.extend-select = [
   "TRY",
   "UP",
 ]
-lint.ignore = ["BLE001", "COM812", "FIX002", "ISC001", "TD003", "TRY301"]
+lint.ignore = [ "BLE001", "COM812", "FIX002", "ISC001", "TD003", "TRY301" ]
 
 [tool.pylint.main]
 load-plugins = [
@@ -119,9 +119,9 @@ load-plugins = [
 ]
 
 [tool.pylint."MESSAGES CONTROL"]
-fail-on = ["I"]
+fail-on = [ "I" ]
 fail-under = '10'
-ignore = ['.git', 'playground.py', "playground/*"]
+ignore = [ '.git', 'playground.py', "playground/*" ]
 ignore-patterns = ''
 jobs = 4
 limit-inference-results = 100
@@ -315,7 +315,7 @@ argument-naming-style = "snake_case"
 argument-rgx = "[a-z_][a-z0-9_]{2,30}$"
 attr-naming-style = "snake_case"
 attr-rgx = "[a-z_][a-z0-9_]{2,30}$"
-bad-names = ["foo", "bar", "baz", "toto", "tutu", "tata"]
+bad-names = [ "foo", "bar", "baz", "toto", "tutu", "tata" ]
 class-attribute-naming-style = "any"
 class-attribute-rgx = "([A-Za-z_][A-Za-z0-9_]{2,30}|(__.*__))$"
 class-const-naming-style = "UPPER_CASE"
@@ -326,7 +326,7 @@ const-rgx = "(([A-Z_][A-Z0-9_]*)|(__.*__))$"
 docstring-min-length = -1
 function-naming-style = "snake_case"
 function-rgx = "[a-z_][a-z0-9_]{2,30}$"
-good-names = ["i", "j", "k", "ex", "Run", "_"]
+good-names = [ "i", "j", "k", "ex", "Run", "_" ]
 include-naming-hint = true
 inlinevar-naming-style = "any"
 inlinevar-rgx = "[A-Za-z_][A-Za-z0-9_]*$"
@@ -335,18 +335,18 @@ method-rgx = "[a-z_][a-z0-9_]{2,30}$"
 module-naming-style = "snake_case"
 module-rgx = "(([a-z_][a-z0-9_]*)|([A-Z][a-zA-Z0-9]+))$"
 no-docstring-rgx = "^_"
-property-classes = ["abc.abstractproperty"]
+property-classes = [ "abc.abstractproperty" ]
 variable-naming-style = "snake_case"
 variable-rgx = "[a-z_][a-z0-9_]{2,30}$"
 
 [tool.pylint.classes]
-defining-attr-methods = ["__init__", "__new__", "setUp"]
-exclude-protected = ["_asdict", "_fields", "_replace", "_source", "_make"]
-valid-classmethod-first-arg = ["cls"]
-valid-metaclass-classmethod-first-arg = ["mcs"]
+defining-attr-methods = [ "__init__", "__new__", "setUp" ]
+exclude-protected = [ "_asdict", "_fields", "_replace", "_source", "_make" ]
+valid-classmethod-first-arg = [ "cls" ]
+valid-metaclass-classmethod-first-arg = [ "mcs" ]
 
 [tool.pylint.deprecated_builtins]
-bad-functions = ["map", "filter"]
+bad-functions = [ "map", "filter" ]
 
 [tool.pylint.design]
 max-args = 5
@@ -361,7 +361,7 @@ max-returns = 6
 max-statements = 30
 
 [tool.pylint.exceptions]
-overgeneral-exceptions = ["'builtins.Exception'"]
+overgeneral-exceptions = [ "'builtins.Exception'" ]
 
 [tool.pylint.format]
 indent-after-paren = 4
@@ -370,12 +370,12 @@ max-line-length = 120
 max-module-lines = 300
 
 [tool.pylint.imports]
-deprecated-modules = ["regsub", "TERMIOS", "Bastion", "rexec"]
-known-third-party = ["enchant"]
+deprecated-modules = [ "regsub", "TERMIOS", "Bastion", "rexec" ]
+known-third-party = [ "enchant" ]
 
 [tool.pylint.logging]
 logging-format-style = "old"
-logging-modules = ["logging"]
+logging-modules = [ "logging" ]
 
 [tool.pylint."messages control"]
 confidence = [
@@ -420,11 +420,11 @@ timeout-methods = [
 ]
 
 [tool.pylint.miscellaneous]
-notes = ["FIXME", "XXX", "TODO"]
+notes = [ "FIXME", "XXX", "TODO" ]
 
 [tool.pylint.refactoring]
 max-nested-blocks = 5
-never-returning-functions = ["sys.exit", "argparse.parse_error"]
+never-returning-functions = [ "sys.exit", "argparse.parse_error" ]
 
 [tool.pylint.reports]
 evaluation = "10.0 - ((float(5 * error + warning + refactor + convention) / statement) * 10)"
@@ -444,7 +444,7 @@ spelling-ignore-comment-directives = "fmt: on,fmt: off,noqa:,noqa,nosec,isort:sk
 check-str-concat-over-line-jumps = true
 
 [tool.pylint.typecheck]
-contextmanager-decorators = ["contextlib.contextmanager"]
+contextmanager-decorators = [ "contextlib.contextmanager" ]
 ignore-none = true
 ignore-on-opaque-inference = true
 ignored-checks-for-mixins = [
@@ -454,7 +454,7 @@ ignored-checks-for-mixins = [
   "attribute-defined-outside-init",
 
 ]
-ignored-classes = ["optparse.Values", "thread._local", "_thread._local"]
+ignored-classes = [ "optparse.Values", "thread._local", "_thread._local" ]
 missing-member-hint = true
 missing-member-hint-distance = 1
 missing-member-max-choices = 1
@@ -462,15 +462,15 @@ mixin-class-rgx = ".*[Mm]ixin"
 
 [tool.pylint.variables]
 allow-global-unused-variables = true
-callbacks = ["cb_", "_cb"]
+callbacks = [ "cb_", "_cb" ]
 dummy-variables-rgx = "(_+[a-zA-Z0-9]*?$)|dummy"
 ignored-argument-names = "_.*"
-redefining-builtins-modules = ["six.moves", "future.builtins"]
+redefining-builtins-modules = [ "six.moves", "future.builtins" ]
 
 [tool.coverage.run]
 branch = true
-source = ["cryptoward"]
-omit = ["cryptoward/bot/*", "cryptoward/main.py"]
+source = [ "cryptoward" ]
+omit = [ "cryptoward/bot/*", "cryptoward/main.py" ]
 
 [tool.coverage.report]
 show_missing = true
@@ -503,7 +503,7 @@ show_error_codes = true
 no_implicit_optional = true
 warn_return_any = true
 warn_unused_ignores = true
-disable_error_code = ["var-annotated"]
+disable_error_code = [ "var-annotated" ]
 
 [tool.poe.tasks]
 test = "pytest --cov=cryptoward --cov-report=term-missing"
@@ -513,7 +513,7 @@ format = "pre-commit run --all-files --verbose"
 [tool.semantic_release]
 branch = "main"
 commit_message = "chore(release): release version {version}"
-version_variables = ["cryptoward/__init__.py:__version__"]
+version_variables = [ "cryptoward/__init__.py:__version__" ]
 
 [tool.semantic_release.branches.main]
 match = "(main|master)"
@@ -538,13 +538,13 @@ trim_blocks = false
 lstrip_blocks = false
 newline_sequence = "\n"
 keep_trailing_newline = false
-extensions = []
+extensions = [  ]
 autoescape = true
 
 [tool.semantic_release.commit_parser_options]
-allowed_tags = ["chore", "docs", "feat", "fix", "refactor"]
-minor_tags = ["feat"]
-patch_tags = ["fix", "perf"]
+allowed_tags = [ "chore", "docs", "feat", "fix", "refactor" ]
+minor_tags = [ "feat" ]
+patch_tags = [ "fix", "perf" ]
 default_bump_level = 0
 
 [tool.semantic_release.remote]
