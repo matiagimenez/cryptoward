@@ -1,6 +1,14 @@
 # CHANGELOG
 
 
+## v0.5.1 (2025-11-29)
+
+### Bug Fixes
+
+- **config**: Fix several issues
+  ([`cf8d8c6`](https://github.com/matiagimenez/cryptoward/commit/cf8d8c602c1ca4d005152636d6d0a48c4a9106ca))
+
+
 ## v0.5.0 (2025-11-29)
 
 ### Bug Fixes
@@ -30,6 +38,12 @@
   ([`7de3297`](https://github.com/matiagimenez/cryptoward/commit/7de32974634d662e51b16a1f2d39014210bb2de9))
 
 ### Chores
+
+- **config**: Add default value
+  ([`2104241`](https://github.com/matiagimenez/cryptoward/commit/21042414b0449159b66d7604a7ba7f38d6af8d9b))
+
+- **config**: Add vercel deployment configuration and ignore list
+  ([`3ec6c52`](https://github.com/matiagimenez/cryptoward/commit/3ec6c5212ce720a2a63c8cf619405cd573b709dc))
 
 - **config**: Fix lint issues
   ([`d1b0e19`](https://github.com/matiagimenez/cryptoward/commit/d1b0e1966044bcc6c6988c87aaed2a20e5f4836c))
