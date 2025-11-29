@@ -1,3 +1,5 @@
+from typing import Self
+
 import bs4
 import requests
 from pydantic import BaseModel
@@ -8,6 +10,14 @@ from cryptoward.utils import Level, Settings, log
 
 class CryptoService(BaseModel):
     element: Element
+
+    @classmethod
+    def from_settings(cls) -> Self:
+        element = Element(
+            tag=Settings.PRICE_ELEMENT_TAG,
+            data_attributes=Settings.PRICE_ELEMENT_ATTRS,
+        )
+        return cls(element=element)
 
     @staticmethod
     def fetch_page(url: str) -> requests.Response | None:
