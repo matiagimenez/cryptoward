@@ -56,7 +56,7 @@ class TelegramBot:
             time = datetime.time(
                 hour=hour,
                 minute=minute,
-                tzinfo=datetime.timezone.utc,
+                tzinfo=datetime.UTC,
             )
 
             self.unset_job(str(chat_id), context)

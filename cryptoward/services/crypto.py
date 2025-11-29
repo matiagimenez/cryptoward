@@ -30,7 +30,7 @@ class CryptoService(BaseModel):
                 Level.WARNING,
             )
             return None
-        return price_element.text.strip() or "-"  # type: ignore[no-any-return]
+        return price_element.text.strip() or "-"
 
     def fetch_cryptocurrency_prices(self) -> list[str]:
         prices = []
