@@ -1,19 +1,12 @@
 {
-  "builds": [
-    {
-      "src": "cryptoward/main.py",
-      "use": "@vercel/python",
-      "config": {
-        "includeFiles": [
-          "cryptoward/**"
-        ]
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "cryptoward/main.py"
-    }
-  ]
+	"functions": {
+		"cryptoward/api/webhook.py": {
+			"memory": 512,
+			"maxDuration": 10
+		}
+	},
+	"env": {
+		"TELEGRAM_BOT_TOKEN": "@telegram_bot_token",
+		"DATASOURCE_URL": "@datasource_url"
+	}
 }
